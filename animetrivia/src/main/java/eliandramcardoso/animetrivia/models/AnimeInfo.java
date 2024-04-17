@@ -20,7 +20,7 @@ public class AnimeInfo {
     private String character;
     private String quote;
 
-    public String getAnime() {
+    public static String getAnime() {
         return (respostaJSON.getString("anime"));
     }
 
