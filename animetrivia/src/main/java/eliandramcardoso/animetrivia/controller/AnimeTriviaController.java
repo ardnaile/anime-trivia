@@ -1,11 +1,9 @@
 package eliandramcardoso.animetrivia.controller;
 
-import eliandramcardoso.animetrivia.models.AnimeInfo;
-import eliandramcardoso.animetrivia.models.Resposta;
+
+import eliandramcardoso.animetrivia.models.respostaUser;
 import eliandramcardoso.animetrivia.service.AnimeTriviaService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +19,13 @@ public class AnimeTriviaController {
 
     @GetMapping("/frase")
     public ResponseEntity<String> obterFraseAnime() {
+
         return ResponseEntity.ok(animeTriviaService.obterFraseAnime());
+    }
+
+    @PostMapping("/validar")
+    public ResponseEntity<String> validar(@RequestBody respostaUser resposta){
+        return ResponseEntity.ok(animeTriviaService.validar(resposta));
     }
 
     @GetMapping("/ajuda")
@@ -29,16 +33,7 @@ public class AnimeTriviaController {
         return ResponseEntity.ok(animeTriviaService.obterJsonAjuda());
     }
 
-    /*
-    @PostMapping("/validar")
-    public ResponseEntity<String> validar(@RequestBody Resposta respostaAnime){
-        boolean respostaCerta = animeTriviaService.validar(String.valueOf(respostaAnime));
-        if (respostaCerta) {
-            return ResponseEntity.ok("Você acertou!");
-        }
-        return ResponseEntity.ok("Você errou!");
-    }
-     */
+
 }
 
 

@@ -1,16 +1,19 @@
 package eliandramcardoso.animetrivia.service;
 
 import eliandramcardoso.animetrivia.models.AnimeInfo;
-import netscape.javascript.JSObject;
+import eliandramcardoso.animetrivia.models.respostaUser;
+import eliandramcardoso.animetrivia.models.respostaCerta;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 
 @Service
 public class AnimeTriviaService {
 
     public String obterFraseAnime() {
-        return (AnimeInfo.getQuote());
+        return (AnimeInfo.getQuote() + AnimeInfo.getAnime());
     }
 
     public String obterJsonAjuda(){
@@ -20,10 +23,11 @@ public class AnimeTriviaService {
         return jsonAjuda.toString();
     }
 
-    /*
-    public Boolean validar(Object anime){
-        return anime.equals(AnimeInfo.getAnime());
+    public String validar(respostaUser resposta){
+        if (Objects.equals(respostaUser.getRespostaUser(), respostaCerta.getRespostaCerta())){
+            return ("Parabéns acertou");
+        }
+        return ("Parabéns errou!");
     }
-     */
 
 }
