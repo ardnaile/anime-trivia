@@ -8,14 +8,20 @@ public class AnimeInfo extends AnimeApiService {
     private String character;
     private String quote;
 
+    public AnimeInfo(String anime, String character, String quote){
+        this.anime = anime;
+        this.character = character;
+        this.quote = quote;
+    }
+
     public static String getAnime() {
-        return (getRespostaJSON().getString("anime"));
+        return (getDadosApi().getString("anime"));
     }
 
     public void setAnime(String anime) { this.anime = anime;}
 
     public static String getCharacter() {
-        return (getRespostaJSON().getString("character"));
+        return (getDadosApi().getString("character"));
     }
 
     public void setCharacter(String character) {
@@ -23,7 +29,7 @@ public class AnimeInfo extends AnimeApiService {
     }
 
     public static String getQuote() {
-        return (getRespostaJSON().getString("quote"));
+        return (getDadosApi().getString("quote"));
     }
 
     public void setQuote(String quote) {

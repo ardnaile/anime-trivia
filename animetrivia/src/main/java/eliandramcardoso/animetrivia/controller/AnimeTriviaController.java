@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static eliandramcardoso.animetrivia.service.AnimeTriviaService.getArrayInfoAnime;
+
 @RestController
-@RequestMapping("/anime")
+@RequestMapping("/animetrivia")
 public class AnimeTriviaController {
 
     private final AnimeTriviaService animeTriviaService;
@@ -20,11 +22,18 @@ public class AnimeTriviaController {
     @GetMapping("/frase")
     public ResponseEntity<String> obterFraseAnime() {
 
-        return ResponseEntity.ok(animeTriviaService.obterFraseAnime());
+        return ResponseEntity.ok(animeTriviaService.frase());
     }
 
-    @PostMapping("/validar")
-    public ResponseEntity<String> validar(@RequestBody respostaUser resposta){
+    @PostMapping("/frase/validar")
+    public ResponseEntity<Object> validar(@RequestBody respostaUser resposta){
+        // debbug
+        System.out.println("id = " + resposta.getIdUser() + " personagem = " + resposta.getPersonagemUser());
+
+        String[] array = getArrayInfoAnime();
+        String frase = array[0];
+        System.out.println(frase);
+
         return ResponseEntity.ok(animeTriviaService.validar(resposta));
     }
 

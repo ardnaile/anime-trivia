@@ -2,12 +2,20 @@ package eliandramcardoso.animetrivia.models;
 
 public class respostaUser {
 
-    private static Object respostaUser;
+    private String personagemUser;
+    private String idUser;
 
-    public static String getRespostaUser() { return (String) respostaUser; }
+    public respostaUser(String personagemUser, String idUser){
+        this.personagemUser = personagemUser;
+        this.idUser = idUser;
+    }
+    public String  getPersonagemUser() { return personagemUser; }
 
     public void setRespostaUser() {
-        respostaUser = respostaUser;
+        personagemUser = personagemUser;
     }
 
+    public String getIdUser() {return idUser;}
+
+    public void setIdUser() {idUser = idUser;}
 }
