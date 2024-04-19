@@ -24,15 +24,14 @@ public class AnimeApiService {
 
         return new JSONObject(respostaAPI);
     }
+    private static int id = 0;
     public static String[] getArrayFromAPI() {
         JSONObject dadosApi = getDadosApi();
 
-        AtomicInteger id = new AtomicInteger(0);
         String quote = dadosApi.getString("quote");
         String anime = dadosApi.getString("anime");
         String character = dadosApi.getString("character");
-
-        String.valueOf(id.getAndIncrement());
+        id++;
 
         return new String[]{quote, anime, character, String.valueOf(id)};
     }
