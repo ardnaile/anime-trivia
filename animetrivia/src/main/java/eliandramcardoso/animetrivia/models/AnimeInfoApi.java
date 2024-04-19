@@ -2,26 +2,26 @@ package eliandramcardoso.animetrivia.models;
 
 import eliandramcardoso.animetrivia.service.AnimeApiService;
 
-public class AnimeInfo extends AnimeApiService {
+import java.util.concurrent.atomic.AtomicInteger;
 
-    private String anime;
-    private String character;
-    private String quote;
 
-    public AnimeInfo(String anime, String character, String quote){
-        this.anime = anime;
-        this.character = character;
-        this.quote = quote;
-    }
+public class AnimeInfoApi extends AnimeApiService {
+
+    static String[] array = getArrayFromAPI();
+
+    private static String anime;
+    private static String character;
+    private static String quote;
+    private static int id;
 
     public static String getAnime() {
-        return (getDadosApi().getString("anime"));
+        return (array[1]);
     }
 
     public void setAnime(String anime) { this.anime = anime;}
 
     public static String getCharacter() {
-        return (getDadosApi().getString("character"));
+        return (array[2]);
     }
 
     public void setCharacter(String character) {
@@ -29,11 +29,17 @@ public class AnimeInfo extends AnimeApiService {
     }
 
     public static String getQuote() {
-        return (getDadosApi().getString("quote"));
+        return (array[0]);
     }
 
     public void setQuote(String quote) {
         this.quote = quote;
     }
+
+    public static String getId(){
+        return(array[3]);
+    }
+
+    public void setId(int id) {this.id = id;}
 }
 

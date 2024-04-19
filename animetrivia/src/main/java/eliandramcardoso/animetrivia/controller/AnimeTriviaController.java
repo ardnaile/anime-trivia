@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static eliandramcardoso.animetrivia.service.AnimeTriviaService.getArrayInfoAnime;
 
 @RestController
 @RequestMapping("/animetrivia")
@@ -29,11 +28,6 @@ public class AnimeTriviaController {
     public ResponseEntity<Object> validar(@RequestBody respostaUser resposta){
         // debbug
         System.out.println("id = " + resposta.getIdUser() + " personagem = " + resposta.getPersonagemUser());
-
-        String[] array = getArrayInfoAnime();
-        String frase = array[0];
-        System.out.println(frase);
-
         return ResponseEntity.ok(animeTriviaService.validar(resposta));
     }
 
